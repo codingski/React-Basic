@@ -14,10 +14,13 @@ class Habit extends Component { // 클래스는 항상 대문자로 시작!
         const count = this.state.count - 1;
         this.setState({count: count < 0 ? 0 : count});
     }
+
     render() {
+        // const habitName = this.props.habit.name; 이렇게 하는 방법도 있지만 아래 더욱 쉬운방법이 있음!
+        const { name, count } = this.props.habit; // 대신 오브젝트의 key값 이름 그대로 사용해야됨
         return <li className="habit">
-        <span className="habit-name">Reading</span>
-        <span className="habit-count">{this.state.count}</span>
+        <span className="habit-name">{name}</span>
+        <span className="habit-count">{count}</span>
         <button className="habit-button habit-increase" onClick={this.handleIncrement}>
             <i className="fas fa-plus-square"></i>
         </button>
